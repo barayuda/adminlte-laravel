@@ -1,3 +1,10 @@
+# Please if you like this package...
+
+I live in Catalonia... please help us as much as you can:
+
+[![Help Catalonia](https://img.youtube.com/vi/wouNL14tAks/0.jpg)](https://www.youtube.com/watch?v=wouNL14tAks)
+
+
 # AdminLTE template Laravel 5 package
 A Laravel 5 package that switch default Laravel scaffolding / boilerplate to AdminLTE template with Bootstrap 3.0 and Pratt Landing Page
 
@@ -64,6 +71,7 @@ This packages use (no need to install):
 * [league/flysystem](https://github.com/thephpleague/flysystem) : Filesystem support.
 * [acacha/forms](https://github.com/acacha/forms) : Javascript Form objects implementation.
 * [acacha/llum](https://github.com/acacha/llum). Easy Laravel packages installation (and other tasks). Used to modify config/app.php file without using stubs (so you changes to this file would be respected)
+* [thephpleague/skeleton](https://github.com/thephpleague/skeleton). This package use/has been adapted to use the phpleague skeleton.
 * Acacha llum requires GNU sed. on MAC OS install GNU sed with:
 
 ```bash
@@ -118,7 +126,7 @@ composer global require "acacha/adminlte-laravel-installer=~3.0"
 
 ## Laravel 5.4
 
-Laravel 5.4 is the default Laravel version supported. See section Installation & use for more info. See below for info about how to install this package in older Laravel versions
+Use 4.1.23 version of this package!
 
 ### Laravel 5.4 manual installation
 
@@ -139,7 +147,7 @@ To register the Service Provider edit **config/app.php** file and add to provide
 
 ```php
 /*
-* Acacha AdminLTE template provider
+ * Acacha AdminLTE template provider
  */
 Acacha\AdminLTETemplateLaravel\Providers\AdminLTETemplateServiceProvider::class,
 ```
@@ -148,8 +156,8 @@ To Register Alias edit **config/app.php** file and add to alias array:
 
 ```php
 /*
-* Acacha AdminLTE template alias
-*/
+ * Acacha AdminLTE template alias
+ */
 'AdminLTE' => Acacha\AdminLTETemplateLaravel\Facades\AdminLTE::class,
 ```
 
@@ -264,7 +272,7 @@ See issue https://github.com/acacha/adminlte-laravel/issues/69 for more info
 Once package installed you have to follow the usual steps of any laravel project to Login to the admin interface:
 
 - Create a database. I recommend the use of laravel Homestead ()
-- Create/check .env file and configure database acces (database name, password, etc)
+- Create/check .env file and configure database access (database name, password, etc)
 - Run migrations with command $ php artisan migrate
 - Registera a first user and Login with it
 
@@ -333,7 +341,7 @@ php artisan make:route about --type=controller
 this adds the following:
 
 ```php
-    Route::get('about', 'AboutController@index');
+Route::get('about', 'AboutController@index');
 ```
 
 to file **routes/web.php**. You can choose the controller name and method with:
@@ -351,7 +359,7 @@ php artisan make:route about --type=resource
 this adds the following:
 
 ```php
-    Route::resource('about', 'About@index');
+Route::resource('about', 'About@index');
 ```
 
 to file **routes/web.php**.
@@ -451,7 +459,7 @@ It's a cinch to add (optional) Social Login/Register support to Laravel Adminlte
 adminlte-laravel social
 ```
 
-Follow the wixard to configure your social providers Oauth data and enjoy!
+Follow the wizard to configure your social providers Oauth data and enjoy!
 
 More info at https://github.com/acacha/laravel-social.
 
@@ -485,13 +493,23 @@ http://acacha.org/mediawiki/AdminLTE#adminlte-laravel
 
 ## Tests
 
-There are two kind of tests Feature/Unit tests and Browser tests. To execute Feature/Unit tests execute:
+### Testing this package
+
+Use phpunit on run composer script test:
+
+``` bash
+$ composer test
+```
+
+### Testing laravel project once this package is installed
+
+Once this package is installed in a Laravel project some tests are installed to test package features. There are two kind of tests Feature/Unit tests and Browser tests. To execute Feature/Unit tests execute:
 
 ```
 ./vendor/bin/phpunit
 ```
 
-In a new created laravel project with acacha-admintle.laravel installed to test that package is installed correctly. You can also execute Browser tests with Laravel Dusk:
+In a new created laravel project with acacha-admintle.laravel installed to test that package is installed correctly. You can also execute Browser tests with Laravel Dusk (please install first manually Dusk package following https://laravel.com/docs/master/dusk):
 
 ```
 php artisan dusk:install
@@ -516,7 +534,7 @@ In your config/app.php file you can change locale to change language. You can in
 php artisan vendor:publish --tag=adminlte_lang --force
 ```
 
-The following languages are supported by default on this package: English, Catalan,Spanish and Brazilian Portuguese. Please feel free to submit a new pull request with another languages if you wish.
+The following languages are supported by default on this package: English, Catalan, Spanish, Dutch and Brazilian Portuguese. Please feel free to submit a new pull request with another languages if you wish.
 
 ## Troubleshooting
 
@@ -567,11 +585,11 @@ To come back to email login remove **field** option from **config/auth.php** fil
 
 ```bash
 'providers' => [
-        'users' => [
-            'driver' => 'eloquent',
-            'model' => App\User::class,
-            'field' => 'username' // Adminlte laravel. Valid values: 'email' or 'username'
-        ],
+    'users' => [
+        'driver' => 'eloquent',
+        'model' => App\User::class,
+        'field' => 'username' // Adminlte laravel. Valid values: 'email' or 'username'
+    ],
 ```
 
 NOTE: Migration required to add username field to users table requires:
@@ -586,10 +604,10 @@ Optionally you can define a default domain name for username login. Add domain o
 
 ```php
 'defaults' => [
-        'guard' => 'web',
-        'passwords' => 'users',
-        'domain' => 'defaultdomain.com',
-    ],
+    'guard' => 'web',
+    'passwords' => 'users',
+    'domain' => 'defaultdomain.com',
+],
 ```
 
 to file **config/auth.php**. Then if an user tries to login with no domain the default domain will be appended whe logging. 
@@ -663,12 +681,6 @@ Feel free to remove/adapt this file to your needs.
 ## Change log
 
 Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recently.
-
-## Testing
-
-``` bash
-$ composer test
-```
 
 ## Contributing
 
